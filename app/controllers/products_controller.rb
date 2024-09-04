@@ -7,12 +7,34 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(
-      name: "television",
-      price: 600,
-      image_url: "https://media.istockphoto.com/id/1395191574/photo/black-led-tv-television-screen-blank-isolated.jpg?s=612x612&w=0&k=20&c=ps14JZJh0ebkINcbQyHFsR1J5EC7ozkj_WO7Fh_9IOI=",
-      description: "shows images from tv channels"
+      name: params[:name],
+      price: params[:price],
+      image_url: params[:image_url],
+      description: params[:description],
     )
     @product.save
+    render :show
+  end
+
+  def show
+    # get the right id    
+    @product = Product.find_by(id: params[:id])
+    # find the product with that id
+    render :show
+  end
+
+  def update
+    # find the correct product
+    @product = Product.find_by(id: params[:id])
+    # modify attributes
+    @product.update(
+      name: params[:name],
+      price: params[:price],
+      image_url: params[:image_url],
+      description: params[:description],
+    )
+    # save it
+    # render 
     render :show
   end
 end
