@@ -27,15 +27,21 @@ class ProductsController < ApplicationController
     # find the correct product
     @product = Product.find_by(id: params[:id])
     # modify attributes
+    # 
+    # what should i do if the param is nil? I want to not update that value
     @product.update(
-      name: params[:name],
-      price: params[:price],
-      image_url: params[:image_url],
-      description: params[:description],
+      name: params[:name] || @product.name,
+      price: params[:price] || @product.price,
+      image_url: params[:image_url] || @product.image_url,
+      description: params[:description] || @product.description,
     )
-    # save it
-    # render 
     render :show
+  end
+
+  def destroy
+    @product = Product.find_by(id: params[:id])
+    @product.destroy
+    render json: {message: "product has been removed"}
   end
 end
 
