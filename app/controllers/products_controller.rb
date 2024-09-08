@@ -12,8 +12,13 @@ class ProductsController < ApplicationController
       image_url: params[:image_url],
       description: params[:description],
     )
-    @product.save
-    render :show
+    # happy/sad path
+    if @product.save
+      render :show
+    else
+      # error handling      # 
+      render json: {errors: @product.errors.full_messages}
+    end
   end
 
   def show
