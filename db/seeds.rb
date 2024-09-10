@@ -8,11 +8,14 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+10.times do
+  product = Product.new(
+    name: "television#{rand(1..100)}",
+    price: 600,
+    image_url: "https://media.istockphoto.com/id/1395191574/photo/black-led-tv-television-screen-blank-isolated.jpg?s=612x612&w=0&k=20&c=ps14JZJh0ebkINcbQyHFsR1J5EC7ozkj_WO7Fh_9IOI=",
+    description: "shows images from tv channels",
+    supplier_id: Supplier.first.id
 
-product = Product.new(
-  name: "television",
-  price: 600,
-  image_url: "https://media.istockphoto.com/id/1395191574/photo/black-led-tv-television-screen-blank-isolated.jpg?s=612x612&w=0&k=20&c=ps14JZJh0ebkINcbQyHFsR1J5EC7ozkj_WO7Fh_9IOI=",
-  description: "shows images from tv channels"
-)
-product.save
+  )
+  product.save!
+end
