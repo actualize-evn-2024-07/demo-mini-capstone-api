@@ -10,6 +10,7 @@ class Product < ApplicationRecord
 # Description - length of a minimum of 1 and a maximum of 500 characters
 
   belongs_to :supplier
+  has_many :images
   # def supplier
     # Supplier.find_by(id: supplier_id)
   # end
