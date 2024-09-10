@@ -9,8 +9,10 @@ class Product < ApplicationRecord
 # Price - presence - numericality and not a negative number or 0
 # Description - length of a minimum of 1 and a maximum of 500 characters
 
-
-
+  belongs_to :supplier
+  # def supplier
+    # Supplier.find_by(id: supplier_id)
+  # end
 
 
 
