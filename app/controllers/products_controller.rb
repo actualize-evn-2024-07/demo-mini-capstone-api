@@ -9,8 +9,8 @@ class ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name],
       price: params[:price],
-      image_url: params[:image_url],
       description: params[:description],
+      supplier_id: params[:supplier_id]
     )
     # happy/sad path
     
@@ -37,8 +37,7 @@ class ProductsController < ApplicationController
     # what should i do if the param is nil? I want to not update that value
     @product.update(
       name: params[:name] || @product.name,
-      price: params[:price] || @product.price,
-      image_url: params[:image_url] || @product.image_url,
+      price: params[:price] || @product.price,      
       description: params[:description] || @product.description,
     )
     render :show
