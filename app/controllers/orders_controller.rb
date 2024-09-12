@@ -7,16 +7,16 @@ class OrdersController < ApplicationController
   def create
     # make a new order
     # 
-    order = Order.new(
-      user_id: params[:user_id],
+    @order = Order.new(
+      user_id: current_user.id,
       product_id: params[:product_id],
       quantity: params[:quantity],
       subtotal: params[:subtotal],
       tax: params[:tax],
       total: params[:total],
     )
-    order.save
-    render json: {message:" hello"}
+    @order.save
+    render :show
   end
 
   def show
