@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = Order.all
+    render :index
+  end
+  
   def create
     # make a new order
     # 
