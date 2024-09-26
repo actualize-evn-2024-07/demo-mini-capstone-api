@@ -9,4 +9,7 @@ json.tax product.tax
 json.total product.total
 json.supplier product.supplier
 json.supplier_id product.supplier_id
-json.images product.images
+
+# json.friendly_image product.friendly_image
+# json.images product.images
+json.images_with_default product.images_with_default
