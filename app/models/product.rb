@@ -34,13 +34,13 @@ class Product < ApplicationRecord
     tax + price
   end
 
-  def friendly_image
-    if images.length > 0
-      return images[0].url
-    else
-      return "https://snworksceo.imgix.net/rce/26b94560-9203-4db4-9d67-40310ef65e60.sized-1000x1000.jpeg?w=1000"
-    end
-  end
+  # def friendly_image
+  #   if images.length > 0
+  #     return images[0].url
+  #   else
+  #     return "https://snworksceo.imgix.net/rce/26b94560-9203-4db4-9d67-40310ef65e60.sized-1000x1000.jpeg?w=1000"
+  #   end
+  # end
 
   def images_with_default
     if images.length > 0
