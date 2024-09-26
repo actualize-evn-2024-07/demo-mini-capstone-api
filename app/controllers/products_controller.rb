@@ -14,11 +14,13 @@ class ProductsController < ApplicationController
     )
     # happy/sad path
     if @product.save
-      image = Image.new(
-        url: params[:image_url],
-        product_id: @product.id
-      )
-      image.save
+      params[:image_urls].each do |url|
+        image = Image.new(
+          url: url,
+          product_id: @product.id
+        )
+        image.save
+      end
       render :show
     else
       # error handling      # 
