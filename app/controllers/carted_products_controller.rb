@@ -14,4 +14,5 @@ class CartedProductsController < ApplicationController
     @carted_product.save
     render :show
   end
+
 end

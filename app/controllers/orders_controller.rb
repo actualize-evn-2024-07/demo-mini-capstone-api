@@ -8,8 +8,8 @@ class OrdersController < ApplicationController
     # find all the carted products in user's shopping cart
     # current_user.carted_products.where(status: "carted")
     @carted_products = CartedProduct.where(status: "carted", user_id: current_user.id)
-    p @carted_products[0].quantity * @carted_products[0].product.price
-    p @carted_products[1].quantity * @carted_products[1].product.price
+    # p @carted_products[0].quantity * @carted_products[0].product.price
+    # p @carted_products[1].quantity * @carted_products[1].product.price
     # for one cp
       # find quantity
       # find product, and product's price
@@ -32,6 +32,13 @@ class OrdersController < ApplicationController
       total: calculated_total,      
     )
     @order.save!
+
+    # go back to shopping cart, change the order id and the status
+    @carted_products.each do |cp|
+      cp.order_id = @order.id
+      cp.status = "purchased"
+      cp.save
+    end
     render :show
   end
 
