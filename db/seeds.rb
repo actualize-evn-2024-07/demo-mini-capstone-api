@@ -24,8 +24,8 @@
 #
 # find all the products with an image_url
 # make a new image for that product
-products_with_images = Product.where.not(image_url: nil)
+# products_with_images = Product.where.not(image_url: nil)
 
-products_with_images.each do |product|
-  Image.create!(url: product.image_url, product_id: product.id)
-end
+# products_with_images.each do |product|
+#   Image.create!(url: product.image_url, product_id: product.id)
+# end
